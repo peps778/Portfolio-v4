@@ -1,11 +1,12 @@
 ---
 import Navigation from '../components/Navigation.tsx';
 import Hero from '../components/Hero';
-
 import Layout from '../layouts/Layout.astro';
+import Skills from '../components/SkillsSection';
 ---
 
 <Layout>
 	<Navigation client:load />
 	<Hero client:load />
+	<Skills client:load />
 </Layout>
