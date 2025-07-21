@@ -1,5 +1,5 @@
 import HeroImage from "../assets/images/Paul Jhon Magbanua - hero page.png";
-import Button from "./downloadButton";
+import Button from "./DownloadButton";
 
 
 function Hero() {
