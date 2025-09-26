@@ -1,0 +1,198 @@
+<section id="fifthSection" class="bg-[#f9f9f9] py-16">
+  <div class="max-w-screen-xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+    
+    <!-- Left Content -->
+    
+
+    <!-- Right Content - Contact Form -->
+    <div class="bg-gradient-to-b from-[#0A0C1C] to-[#1E2235] w-full max-w-2xl mx-auto p-8 rounded-2xl shadow-lg" style="filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));">
+      <h2 class="text-white text-3xl font-bold text-center mb-6">Contact Me!</h2>
+
+      <!-- Form  -->
+        <form id="contactForm" class="space-y-5" onsubmit="sendMail(event)">
+  <input name="name" id="nameField" type="text" placeholder="Your Name" required
+    class="w-full p-4 bg-gray-800 text-white rounded-xl border border-gray-700">
+
+  <div class="flex">
+    <select name="country_code" id="countryCode"
+      class="p-4 bg-gray-800 text-white rounded-l-xl border border-gray-700">
+      <option value="+1">+1 (US)</option>
+      <option value="+63">+63 (PH)</option>
+      <option value="+44">+44 (UK)</option>
+      <option value="+91">+91 (IN)</option>
+    </select>
+    <input name="phone" id="phoneField" type="tel" placeholder="123-456-7890" required
+      class="w-full p-4 bg-gray-800 text-white rounded-r-xl border border-gray-700">
+  </div>
+
+  <input name="email" id="emailField" type="email" placeholder="mail@site.com" required
+    class="w-full p-4 bg-gray-800 text-white rounded-xl border border-gray-700">
+
+  <textarea name="message" id="subjectField" placeholder="Your Message" rows="4" required
+    class="w-full p-4 bg-gray-800 text-white rounded-xl border border-gray-700"></textarea>
+
+ 
+<button type="submit" id="submitBtn"
+  class="w-full p-4 bg-blue-700 text-white font-bold rounded-xl shadow-md hover:bg-blue-400 transition-all duration-300 flex justify-center items-center gap-2">
+  
+  <svg id="spinner" class="hidden animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg"
+    fill="none" viewBox="0 0 24 24">
+    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+    <path class="opacity-75" fill="currentColor"
+      d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+  </svg>
+
+  <span id="btnText">Send</span>
+</button>
+
+
+
+
+</form>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    emailjs.init("4ook_sAMcVyVtVl_8");
+
+    const countryCode = document.getElementById("countryCode");
+    const phoneField = document.getElementById("phoneField");
+    const btn = document.getElementById("submitBtn");
+    const btnText = document.getElementById("btnText");
+    const spinner = document.getElementById("spinner");
+
+    const phonePlaceholders = {
+      "+1": "123-456-7890",
+      "+63": "912-345-6789",
+      "+44": "7123 456 789",
+      "+91": "91234 56789"
+    };
+
+    const phoneRegex = {
+      "+1": /^\d{3}-\d{3}-\d{4}$/,
+      "+63": /^\d{3}-\d{3}-\d{4}$/,
+      "+44": /^\d{4} \d{3} \d{3}$/,
+      "+91": /^\d{5} \d{5}$/
+    };
+
+    // Cleave.js instance
+    let cleaveInstance;
+
+    function setPhoneFormatter() {
+      const selectedCode = countryCode.value;
+      phoneField.placeholder = phonePlaceholders[selectedCode] || "Enter phone number";
+
+      // Destroy old instance
+      if (cleaveInstance) {
+        cleaveInstance.destroy();
+      }
+
+      // Set new formatting rules
+      switch (selectedCode) {
+        case "+1":
+        case "+63":
+          cleaveInstance = new Cleave(phoneField, {
+            delimiters: ["-", "-"],
+            blocks: [3, 3, 4],
+            numericOnly: true,
+          });
+          break;
+        case "+44":
+          cleaveInstance = new Cleave(phoneField, {
+            delimiters: [" ", " "],
+            blocks: [4, 3, 3],
+            numericOnly: true,
+          });
+          break;
+        case "+91":
+          cleaveInstance = new Cleave(phoneField, {
+            delimiters: [" "],
+            blocks: [5, 5],
+            numericOnly: true,
+          });
+          break;
+        default:
+          cleaveInstance = new Cleave(phoneField, {
+            numericOnly: true
+          });
+      }
+    }
+
+    countryCode.addEventListener("change", setPhoneFormatter);
+    setPhoneFormatter(); // on page load
+
+    window.sendMail = function (e) {
+      e.preventDefault();
+
+      const selectedCode = countryCode.value;
+      const phoneValue = phoneField.value.trim();
+
+      // Validate phone number format
+      const regex = phoneRegex[selectedCode];
+      if (regex && !regex.test(phoneValue)) {
+        Swal.fire({
+          icon: "error",
+          title: "Invalid Phone Format",
+          text: `Please match the format: ${phonePlaceholders[selectedCode]}`,
+        });
+        return;
+      }
+
+      // Show loading state
+      btn.disabled = true;
+      btnText.textContent = "Sending...";
+      spinner.classList.remove("hidden");
+
+      const templateParams = {
+        name: document.getElementById("nameField").value,
+        email: document.getElementById("emailField").value,
+        message: document.getElementById("subjectField").value,
+        phone: selectedCode + " " + phoneValue,
+      };
+
+      emailjs.send("service_figir0n", "template_boc2wna", templateParams)
+        .then(() => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Message Sent!',
+            text: 'Your message was sent successfully.',
+            confirmButtonColor: '#3085d6',
+          });
+          document.getElementById("contactForm").reset();
+          setPhoneFormatter(); // reapply input format
+        })
+        .catch((err) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong. Please try again.',
+            confirmButtonColor: '#d33',
+          });
+          console.error("Error sending email:", err);
+        })
+        .finally(() => {
+          btn.disabled = false;
+          btnText.textContent = "Send";
+          spinner.classList.add("hidden");
+        });
+    };
+  });
+</script>
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</section>
