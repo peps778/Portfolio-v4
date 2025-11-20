@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import Resume from "/your-repo-name/MAGBANUA_PAUL_JHON.pdf";
 
 function Button() {
 
@@ -12,8 +13,8 @@ function Button() {
       btnTextRef.current.textContent = "Downloading...";
 
       const link = document.createElement("a");
-      link.href = "/Paul Jhon Magbanua - CV.pdf"; 
-      link.download = "Paul Jhon Magbanua - CV.pdf";
+      link.href = Resume; 
+      link.download = "MAGBANUA, PAUL JHON - CV.pdf";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
