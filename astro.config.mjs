@@ -9,6 +9,6 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
   integrations: [react()],
-  base: '/your-repo-name/',
+  base: '/Portfolio-v4',
   output: 'static' 
 });
