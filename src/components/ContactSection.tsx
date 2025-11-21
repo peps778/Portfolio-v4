@@ -20,7 +20,10 @@ export default function ContactSection() {
                     <div className="bg-red-300">
                         <form id="contactForm" className="space-y-5">
                             <h1 className="text-black font-black">Contact Me!</h1>
-                            <input type="email" placeholder="your-email@gmail.com"/>
+                            <label htmlFor="email">Email:</label><br />
+                            <input type="email" placeholder="your-email@gmail.com"/> <br />
+
+                            <label htmlFor="phone">Phone:</label><br />
                             <input type="phone" placeholder="(123) 1133 1345"/>
                         </form>
                     </div>

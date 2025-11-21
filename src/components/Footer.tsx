@@ -2,7 +2,9 @@
 
 function Footer() {
     return(
-        <div>test</div>
+        <section className="bg-custom-gray">
+            
+        </section>
     );
 }
 
