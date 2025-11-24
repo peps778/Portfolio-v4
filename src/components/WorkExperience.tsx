@@ -1,8 +1,8 @@
-import Photo from '../assets/images/ExperienceImage.png'
+import Photo from '../assets/images/work_stock.png'
 
 function WorkExperience() {
   return (
-    <section id="thirdSection" className="bg-[#f9f9f9] px-4 py-12 h-fit">
+    <section id="thirdSection" className="bg-[#f9f9f9] px-4 py-12">
       <div className="max-w-7xl mx-auto">
 
         {/* Section Header */}
@@ -16,7 +16,7 @@ function WorkExperience() {
 
           {/* Image Section */}
           <div className="bg-slate-50 rounded-lg p-4">
-            <img src={Photo.src} alt="Experience Visual" className="w-full object-contain" style={{ filter: "drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2))" }} />
+            <img src={Photo.src} alt="Experience Visual" className="w-full object-contain h-100" style={{ filter: "drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2))" }} />
           </div>
 
           {/* Experience Text */}

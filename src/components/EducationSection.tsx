@@ -32,7 +32,7 @@ function EducationSection() {
   }, [currentIndex]);
 
   return (
-    <section id="fourthSection" className="bg-slate-900">
+    <section id="fourthSection" className=" bg-slate-900">
       <div className="container mx-auto px-4 py-20">
         {/* Title */}
         <div className="text-center mb-12">

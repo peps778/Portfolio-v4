@@ -1,5 +1,5 @@
 import contactImage from "../assets/images/ExperienceImage.png";
-
+import ContactForm from "../components/Form";
 export default function ContactSection() {
     return (
         <section id="fifthSection" className="bg-[#f9f9f9] py-16">
@@ -17,18 +17,7 @@ export default function ContactSection() {
 
 
                 <div>
-                    <div className="bg-red-300">
-                        <form id="contactForm" className="space-y-5">
-                            <h1 className="text-black font-black">Contact Me!</h1>
-                            <label htmlFor="email">Email:</label><br />
-                            <input type="email" placeholder="your-email@gmail.com"/> <br />
-
-                            <label htmlFor="phone">Phone:</label><br />
-                            <input type="phone" placeholder="(123) 1133 1345"/>
-                        </form>
-                    </div>
-
-
+                    <ContactForm /> 
                 </div>
             </div>
         </section>
