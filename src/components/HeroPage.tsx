@@ -6,7 +6,7 @@ function Hero() {
 
   return (
 
-  <section id="hero" className="bg-[#f9f9f9] px-10 lg:py-30">
+  <section id="Home" className="bg-[#f9f9f9] px-10 lg:py-30">
   <div className="max-w-5xl mx-auto">
     <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-10">
       <img src={HeroImage.src} alt="Paul Jhon Magbanua" className="w-full object-cover" />

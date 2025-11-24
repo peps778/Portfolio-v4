@@ -2,7 +2,7 @@ import contactImage from "../assets/images/ExperienceImage.png";
 import ContactForm from "../components/Form";
 export default function ContactSection() {
     return (
-        <section id="fifthSection" className="bg-[#f9f9f9] py-16">
+        <section id="Contact" className="bg-[#f9f9f9] py-16">
             <div className="max-w-screen-xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
                <div className="space-y-6 text-center lg:text-left">
                 <img src={contactImage.src} alt="Contact Illustration" className="w-52 sm:w-72 mx-auto lg:mx-0 mb-6"></img>

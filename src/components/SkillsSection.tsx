@@ -50,7 +50,7 @@ const cards = [
 
 const SkillSection: React.FC = () => {
   return (
-    <section id="secondSection" className="bg-slate-900 py-16 px-4 h-fit">
+    <section id="Skills" className="bg-slate-900 py-16 px-4 h-fit">
       <div className="max-w-5xl mx-auto">
         <div className="flex justify-center items-center mb-10">
           <hr className="w-[40%] h-[1px] bg-slate-50 border-0 rounded-sm" />

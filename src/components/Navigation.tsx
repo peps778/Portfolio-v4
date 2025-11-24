@@ -5,8 +5,8 @@ function Navigation() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 bg-[#020618] z-30 border-gray-200 font-poppins">
-      <div className="max-w-6xl flex flex-wrap items-center justify-between mx-auto p-8">
+    <nav className="sticky top-0 bg-[#020618] z-30 border-gray-200 font-poppins px-20">
+      <div className="max-w-6xl flex flex-wrap items-center justify-between mx-auto p-2">
         <a
           href="https://magbanua-pauljhon.website"
           className="flex items-center space-x-3"
@@ -44,29 +44,29 @@ function Navigation() {
 
         {/* Menu */}
         <div className={`${open ? "block" : "hidden"} w-full md:block md:w-auto`}>
-          <ul className="text-xl flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-custom-black md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-[#020618] text-[#f5f5f5]">
+          <ul className="text-xl flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-custom-black md:flex-row md:space-x-1 md:mt-0 md:border-0 md:bg-[#020618] text-[#f5f5f5]">
             <li>
-              <a href="#hero" className="block py-2 px-3 hover:text-blue-700">
+              <a href="#Home" className="block py-2 px-3 hover:text-blue-700">
                 Home
               </a>
             </li>
             <li>
-              <a href="#secondSection" className="block py-2 px-3 hover:text-blue-500">
+              <a href="#Skills" className="block py-2 px-3 hover:text-blue-500">
                 Skills
               </a>
             </li>
             <li>
-              <a href="#thirdSection" className="block py-2 px-3 hover:text-blue-500">
+              <a href="#Experience" className="block py-2 px-3 hover:text-blue-500">
                 Experience
               </a>
             </li>
             <li>
-              <a href="#fourthSection" className="block py-2 px-3 hover:text-blue-500">
+              <a href="#Education" className="block py-2 px-3 hover:text-blue-500">
                 Education
               </a>
             </li>
             <li>
-              <a href="#contactForm" className="block py-2 px-3 hover:text-blue-500">
+              <a href="#Contact" className="block py-2 px-3 hover:text-blue-500">
                 Contact
               </a>
             </li>

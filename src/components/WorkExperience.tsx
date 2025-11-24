@@ -2,7 +2,7 @@ import Photo from '../assets/images/work_stock.png'
 
 function WorkExperience() {
   return (
-    <section id="thirdSection" className="bg-[#f9f9f9] px-4 py-12">
+    <section id="Experience" className="bg-[#f9f9f9] px-4 py-12">
       <div className="max-w-7xl mx-auto">
 
         {/* Section Header */}
